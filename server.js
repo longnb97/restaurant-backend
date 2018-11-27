@@ -8,11 +8,18 @@ const morgan = require("morgan")
 let app = express();
 
 
-var corsOptions = {
-    origin: '*',
-    credentials: true };
-
-app.use(cors(corsOptions));
+app.use(function(req, res, next) {
+    var allowedOrigins = ['http://thefoodhouse.herokuapp.com', 'http://thefoodhouse.herokuappp.com'];
+    var origin = req.headers.origin;
+    if(allowedOrigins.indexOf(origin) > -1){
+         res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
+    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', true);
+    return next();
+  });
 // app.use((req, res, next) => {
 //     res.header("Access-Control-Allow-Origin", "http://thefoodhouse.herokuapp.com");
 //     res.header("Access-Control-Allow-Headers", "*");
