@@ -8,7 +8,7 @@ const morgan = require("morgan")
 let app = express();
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://thefoodhouse.herokuapp.com");
+    res.header("Access-Control-Allow-Origin", "http://thefoodhouse.herokuapp.com");
     res.header("Access-Control-Allow-Headers", "https://thefoodhouse.herokuapp.com/login");
     res.header("Access-Control-Allow-Credentials", "https://thefoodhouse.herokuapp.com/login");
     if (req.method === "OPTIONS") {
