@@ -8,7 +8,7 @@ let app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use(cors({ origin: [ 'http://localhost:3000' ], credentials: true }));
+app.use(cors({ origin: [ 'https://thefoodhouse.herokuapp.com' ], credentials: true }));
 
 app.use(session1({
     secret: "bimat",
@@ -40,8 +40,8 @@ app.get("/", (req, res) => {
     res.sendFile('./build/index.html')
 })
 
-const port = 5050
-app.listen(port, (err) => {
+const PORT = process.event.PORT | 5050
+app.listen(PORT, (err) => {
     if (err) console.log(err)
     else console.log(`Sever running at ${port}`)
 })
