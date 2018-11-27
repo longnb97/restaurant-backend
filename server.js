@@ -8,16 +8,21 @@ const morgan = require("morgan")
 let app = express();
 
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://thefoodhouse.herokuapp.com");
-    res.header("Access-Control-Allow-Headers", "*");
-    res.header("Access-Control-Allow-Credentials", "*");
-    if (req.method === "OPTIONS") {
-      res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
-      return res.status(200).json();
-    }
-    next();
-  });
+var corsOptions = {
+    origin: '*',
+    credentials: true };
+
+app.use(cors(corsOptions));
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "http://thefoodhouse.herokuapp.com");
+//     res.header("Access-Control-Allow-Headers", "*");
+//     res.header("Access-Control-Allow-Credentials", "*");
+//     if (req.method === "OPTIONS") {
+//       res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
+//       return res.status(200).json();
+//     }
+//     next();
+//   });
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
