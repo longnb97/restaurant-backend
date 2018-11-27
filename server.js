@@ -4,11 +4,14 @@ const mongoose = require('mongoose')
 const session1 = require("express-session");
 const cors = require("cors")
 const apiRouter = require('./routers/apiRouter')
+const morgan = require("morgan")
 let app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors({ origin: [ 'https://thefoodhouse.herokuapp.com' ], credentials: true }));
+
+app.use(morgan('dev'))
 
 app.use(session1({
     secret: "bimat",
@@ -40,7 +43,7 @@ app.get("/", (req, res) => {
     res.sendFile('./build/index.html')
 })
 
-const PORT = process.event.PORT | 5050
+const PORT = process.env.PORT ||5050
 app.listen(PORT, (err) => {
     if (err) console.log(err)
     else console.log(`Sever running at ${port}`)
