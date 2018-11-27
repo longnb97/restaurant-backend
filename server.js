@@ -9,8 +9,8 @@ let app = express();
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "https://thefoodhouse.herokuapp.com");
-    res.header("Access-Control-Allow-Headers", "https://thefoodhouse.herokuapp.com/login");
-    res.header("Access-Control-Allow-Credentials", "https://thefoodhouse.herokuapp.com/login");
+    res.header("Access-Control-Allow-Headers", "https://thefoodhouse.herokuapp.com");
+    res.header("Access-Control-Allow-Credentials", "https://thefoodhouse.herokuapp.com");
     if (req.method === "OPTIONS") {
       res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
       return res.status(200).json();
