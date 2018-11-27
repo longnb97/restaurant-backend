@@ -11,7 +11,7 @@ app.use(cors({credentials: true, origin: true}))
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "https://thefoodhouse.herokuapp.com");
     res.header("Access-Control-Allow-Headers", "*");
-    res.header("Access-Control-Allow-Credentials", true);
+    res.header("Access-Control-Allow-Credentials", "*");
     if (req.method === "OPTIONS") {
       res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
       return res.status(200).json();
