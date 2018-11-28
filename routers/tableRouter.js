@@ -11,6 +11,7 @@ tableRouter.use('/', (req, res, next) => {
 tableRouter.post('/', (req, res) => {
     try {
         const { url, chairNumber, status, tableNumber, owner } = req.body;
+        console.log(req.body)
         TableModel.create(
             { url, chairNumber, status, tableNumber, owner },
             (error, tableCreated) => {
