@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const TableModel = new Schema({
-    url: { type: String, required: true },
+    url: { type: String, default:'' },
     chairNumber:{ type: String, required: true },
     status: { type: String, default:'Avaiable' },
     tableNumber: { type: String, required: true, unique: true },
