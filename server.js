@@ -8,17 +8,18 @@ const morgan = require("morgan")
 let app = express();
 
 
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     var allowedOrigins = ['http://thefoodhouse.herokuapp.com', 'http://thefoodhouse.herokuappp.com'];
     var origin = req.headers.origin;
-    if (allowedOrigins.indexOf(origin) > -1) {
-        res.setHeader('Access-Control-Allow-Origin', origin);
+    if(allowedOrigins.indexOf(origin) > -1){
+         res.setHeader('Access-Control-Allow-Origin', origin);
     }
+    //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
     res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Access-Control-Allow-Credentials', true);
     return next();
-});
+  });
 // app.use((req, res, next) => {
 //     res.header("Access-Control-Allow-Origin", "http://thefoodhouse.herokuapp.com");
 //     res.header("Access-Control-Allow-Headers", "*");
@@ -47,9 +48,9 @@ app.use(session1({
 //     else console.log("DB connect success!")
 // })
 
-mongoose.connect("mongodb://balo11044:nblong1997@ds145072.mlab.com:45072/quanlynhahang", (err) => {
-    if (err) console.error(err)
-    else console.log("DB connect success!")
+mongoose.connect("mongodb://balo11044:nblong1997@ds145072.mlab.com:45072/quanlynhahang",(err)=>{
+  if (err) console.error(err)
+  else console.log("DB connect success!")
 })
 
 app.use((req, res, next) => {
@@ -65,7 +66,7 @@ app.get("/", (req, res) => {
     res.sendFile('./build/index.html')
 })
 
-const PORT = process.env.PORT || 5050
+const PORT = process.env.PORT ||5050
 app.listen(PORT, (err) => {
     if (err) console.log(err)
     else console.log(`Sever running at ${PORT}`)
