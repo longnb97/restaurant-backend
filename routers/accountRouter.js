@@ -18,6 +18,8 @@ accountRouter.post('/', (req, res) => {
     const { username, password, email, avatarUrl} = req.body;
     const salt = bcrypt.genSaltSync()
     const hashPassword = bcrypt.hashSync(password, salt)
+    const data = { username, hashPassword, email, avatarUrl };
+    console.log(data)
     AccountModel.create(
         { username, hashPassword, email, avatarUrl },
         (err, accountCreated) => {
