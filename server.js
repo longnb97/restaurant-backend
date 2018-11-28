@@ -9,7 +9,7 @@ let app = express();
 
 
 app.use(function(req, res, next) {
-    var allowedOrigins = ['http://thefoodhouse.herokuapp.com', 'http://thefoodhouse.herokuappp.com'];
+    var allowedOrigins = ['https://thefoodhouse.herokuapp.com', 'http://thefoodhouse.herokuappp.com'];
     var origin = req.headers.origin;
     if(allowedOrigins.indexOf(origin) > -1){
          res.setHeader('Access-Control-Allow-Origin', origin);
