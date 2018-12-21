@@ -7,7 +7,7 @@ const apiRouter = require('./routers/apiRouter')
 const morgan = require("morgan")
 let app = express();
 
-
+ 
 app.use(function(req, res, next) {
     var allowedOrigins = ['https://thefoodhouse.herokuapp.com', 'http://thefoodhouse.herokuappp.com'];
     var origin = req.headers.origin;
